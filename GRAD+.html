@@ -1,0 +1,3479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAD+ | Zadar</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        /* ===== ENHANCED APPLE-STYLE VARIABLES ===== */
+        :root {
+            --apple-bg: #f5f5f7;
+            --apple-card: #ffffff;
+            --apple-border: rgba(0, 0, 0, 0.06);
+            --apple-text: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-blue: #007aff;
+            --apple-blue-light: #5ac8fa;
+            --apple-green: #34c759;
+            --apple-orange: #ff9500;
+            --apple-red: #ff3b30;
+            --apple-purple: #af52de;
+            --zadar-blue: #1C3E95;
+            --zadar-light: #00B0F0;
+            
+            /* Enhanced gradients */
+            --gradient-primary: linear-gradient(135deg, var(--zadar-blue), var(--zadar-light));
+            --gradient-success: linear-gradient(135deg, var(--apple-green), #00d4aa);
+            
+            /* Enhanced glass morphism */
+            --glass-bg: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            
+            /* Enhanced animations */
+            --apple-ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --apple-duration: 0.3s;
+            
+            /* Enhanced shadows */
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+            
+            /* Spacing system */
+            --space-xs: 8px;
+            --space-sm: 12px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+        }
+
+        /* ===== ENHANCED RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--apple-bg);
+            color: var(--apple-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ===== ENHANCED APPLE-STYLE LAYOUT ===== */
+        .app-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Enhanced Navigation */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border-bottom: 1px solid var(--apple-border);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-xl);
+            transition: all var(--apple-duration) var(--apple-ease);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-bar.scrolled {
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--apple-text);
+            text-decoration: none;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 16px rgba(28, 62, 149, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-2xl);
+            margin-left: var(--space-2xl);
+        }
+
+        .nav-link {
+            color: var(--apple-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: var(--space-sm) 0;
+            position: relative;
+            transition: all var(--apple-duration) var(--apple-ease);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .nav-link:hover {
+            color: var(--apple-text);
+        }
+
+        .nav-link.active {
+            color: var(--zadar-blue);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s var(--apple-ease);
+            box-shadow: 0 4px 12px rgba(28, 62, 149, 0.2);
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(28, 62, 149, 0.3);
+        }
+
+        /* Enhanced Notification Bell */
+        .notification-bell {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            padding: var(--space-sm);
+            border-radius: 10px;
+            transition: all var(--apple-duration) var(--apple-ease);
+        }
+
+        .notification-bell:hover {
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--apple-text);
+        }
+
+        .notification-count {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: var(--apple-red);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        /* Enhanced Main Content */
+        .main-content {
+            flex: 1;
+            margin-top: 72px;
+            padding: var(--space-2xl);
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        /* Enhanced Hero Section */
+        .hero-section {
+            padding: var(--space-3xl) 0 var(--space-2xl);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-xs) var(--space-lg);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: var(--space-xl);
+            box-shadow: 0 4px 20px rgba(28, 62, 149, 0.2);
+            animation: fadeInUp 0.8s var(--apple-ease);
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s var(--apple-ease) 0.1s both;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--apple-text-secondary);
+            margin-bottom: var(--space-2xl);
+            font-weight: 400;
+            animation: fadeInUp 0.8s var(--apple-ease) 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            animation: fadeInUp 0.8s var(--apple-ease) 0.3s both;
+        }
+
+        /* Enhanced Apple-style Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .card {
+            background: var(--apple-card);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            transition: all var(--apple-duration) var(--apple-ease);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform var(--apple-duration) var(--apple-ease);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-lg);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--apple-text);
+        }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 26px;
+            box-shadow: 0 8px 20px rgba(28, 62, 149, 0.2);
+        }
+
+        /* Enhanced Apple-style Buttons */
+        .btn {
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all var(--apple-duration) var(--apple-ease);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s var(--apple-ease);
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(28, 62, 149, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(28, 62, 149, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--apple-card);
+            color: var(--apple-text);
+            border: 1px solid var(--apple-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background: var(--apple-bg);
+            border-color: var(--apple-text-secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-success {
+            background: var(--gradient-success);
+            color: white;
+            box-shadow: 0 4px 20px rgba(52, 199, 89, 0.2);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(52, 199, 89, 0.3);
+        }
+
+        /* ===== ENHANCED ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--apple-ease), transform 0.8s var(--apple-ease);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== ENHANCED SECTION STYLES ===== */
+        .section {
+            margin-bottom: var(--space-3xl);
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--apple-ease) forwards;
+        }
+
+        .section-header {
+            margin-bottom: var(--space-2xl);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--apple-text);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--apple-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Enhanced Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .stat-card {
+            background: var(--apple-card);
+            border-radius: 18px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            transition: all var(--apple-duration) var(--apple-ease);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-value {
+            font-size: 42px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--apple-text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-trend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            color: var(--apple-green);
+        }
+
+        .trend-down {
+            color: var(--apple-red);
+        }
+
+        /* Enhanced Smart City Challenges */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .challenge-card {
+            background: var(--apple-card);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            transition: all var(--apple-duration) var(--apple-ease);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .challenge-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .challenge-header {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            margin-bottom: var(--space-md);
+        }
+
+        .challenge-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--apple-text);
+            flex: 1;
+        }
+
+        .challenge-category {
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--apple-blue);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .challenge-description {
+            color: var(--apple-text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+
+        .challenge-meta {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        .challenge-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+        }
+
+        .challenge-meta-icon {
+            color: var(--zadar-light);
+        }
+
+        .progress-container {
+            margin-top: var(--space-lg);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--apple-text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--apple-border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+            width: 0;
+            transition: width 1.5s var(--apple-ease);
+        }
+
+        /* Enhanced Idea Incubator */
+        .incubator-container {
+            background: var(--apple-card);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .incubator-stages {
+            display: flex;
+            gap: var(--space-xl);
+            overflow-x: auto;
+            padding: var(--space-lg) 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--apple-border) transparent;
+        }
+
+        .incubator-stages::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .incubator-stages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .incubator-stages::-webkit-scrollbar-thumb {
+            background: var(--apple-border);
+            border-radius: 2px;
+        }
+
+        .stage {
+            min-width: 300px;
+            background: var(--apple-card);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            border: 1px solid var(--apple-border);
+            transition: all var(--apple-duration) var(--apple-ease);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stage:hover {
+            border-color: var(--apple-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .stage-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stage-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--apple-text);
+        }
+
+        .stage-count {
+            font-size: 14px;
+            color: var(--apple-text-secondary);
+        }
+
+        .stage-ideas {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            min-height: 220px;
+        }
+
+        .idea-drag {
+            background: var(--apple-bg);
+            border-radius: 12px;
+            padding: var(--space-md);
+            border: 2px dashed var(--apple-border);
+            cursor: grab;
+            transition: all var(--apple-duration) var(--apple-ease);
+            position: relative;
+        }
+
+        .idea-drag:hover {
+            border-color: var(--apple-blue);
+            background: rgba(0, 122, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .idea-drag:active {
+            cursor: grabbing;
+        }
+
+        .idea-drag-handle {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: var(--apple-text-secondary);
+        }
+
+        /* Enhanced Analytics Dashboard */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* Enhanced Impact Score Distribution Chart */
+        .chart-container {
+            background: var(--apple-card);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            margin-top: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: var(--space-md);
+            height: 220px;
+            padding: 0 var(--space-lg);
+            position: relative;
+            margin-top: var(--space-lg);
+        }
+
+        .chart-bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .chart-bar-community {
+            width: 70%;
+            background: rgba(0, 122, 255, 0.15);
+            border-radius: 6px 6px 0 0;
+            margin-bottom: 4px;
+            transition: height 1.5s var(--apple-ease);
+        }
+
+        .chart-bar-user {
+            width: 90%;
+            background: var(--gradient-primary);
+            border-radius: 6px 6px 0 0;
+            box-shadow: 0 4px 16px rgba(28, 62, 149, 0.2);
+            transition: height 1.5s var(--apple-ease) 0.3s;
+        }
+
+        .chart-label {
+            margin-top: var(--space-md);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--zadar-blue);
+        }
+
+        .chart-tooltip {
+            position: absolute;
+            background: var(--apple-card);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 10px;
+            border: 1px solid var(--apple-border);
+            box-shadow: var(--shadow-md);
+            font-size: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        /* Enhanced Community Feed */
+        .feed {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .post {
+            background: var(--apple-card);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            margin-bottom: var(--space-lg);
+            transition: all var(--apple-duration) var(--apple-ease);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .post:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .post-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(28, 62, 149, 0.2);
+        }
+
+        .post-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--apple-text);
+        }
+
+        .post-info p {
+            font-size: 13px;
+            color: var(--apple-text-secondary);
+        }
+
+        .post-content {
+            color: var(--apple-text);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+            font-size: 15px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: var(--space-xl);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--apple-border);
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: color var(--apple-duration) var(--apple-ease);
+            padding: var(--space-xs);
+            border-radius: 8px;
+        }
+
+        .post-action:hover {
+            color: var(--apple-blue);
+            background: rgba(0, 122, 255, 0.05);
+        }
+
+        .comment-section {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--apple-border);
+        }
+
+        .comment-input {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .comment-input input {
+            flex: 1;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--apple-border);
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all var(--apple-duration) var(--apple-ease);
+        }
+
+        .comment-input input:focus {
+            outline: none;
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .comment-input button {
+            background: var(--apple-blue);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all var(--apple-duration) var(--apple-ease);
+        }
+
+        .comment-input button:hover {
+            background: var(--zadar-blue);
+            transform: translateY(-2px);
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .comment {
+            padding: var(--space-md);
+            background: var(--apple-bg);
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .comment:first-child {
+            margin-top: 0;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--apple-text);
+            margin-bottom: var(--space-xs);
+        }
+
+        .comment-content {
+            margin-bottom: var(--space-xs);
+        }
+
+        .comment-time {
+            font-size: 12px;
+            color: var(--apple-text-secondary);
+        }
+
+        /* Enhanced Fact Check Assistant */
+        .fact-check-container {
+            background: var(--apple-card);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            border: 1px solid var(--apple-border);
+            max-width: 680px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ai-response {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: var(--space-xl);
+            border-radius: 16px;
+            margin-top: var(--space-xl);
+            animation: slideInRight 0.5s var(--apple-ease);
+            display: none;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .ai-icon {
+            font-size: 28px;
+            animation: pulse 2s infinite;
+        }
+
+        .ai-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Enhanced Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+
+        .share-btn {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 20px;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            transition: all var(--apple-duration) var(--apple-ease);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .share-linkedin {
+            background: #0077B5;
+            color: white;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 0.3s var(--apple-ease);
+            padding: var(--space-md);
+        }
+
+        .modal-content {
+            background: var(--apple-card);
+            border-radius: 24px;
+            padding: var(--space-2xl);
+            max-width: 560px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--apple-border);
+            animation: slideInRight 0.3s var(--apple-ease);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Enhanced Login Screen */
+        .login-screen {
+            min-height: 100vh;
+            background: var(--apple-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl);
+        }
+
+        .login-card {
+            background: var(--apple-card);
+            border-radius: 24px;
+            padding: var(--space-3xl);
+            width: 100%;
+            max-width: 440px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--apple-border);
+            animation: fadeInUp 0.6s var(--apple-ease);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-lg);
+            color: white;
+            font-size: 36px;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(28, 62, 149, 0.3);
+        }
+
+        /* Enhanced Form Elements */
+        .form-group {
+            margin-bottom: var(--space-xl);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--apple-text);
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            border: 1px solid var(--apple-border);
+            border-radius: 12px;
+            font-size: 15px;
+            color: var(--apple-text);
+            background: var(--apple-card);
+            transition: all var(--apple-duration) var(--apple-ease);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* Enhanced Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: var(--apple-card);
+            border-top: 1px solid var(--apple-border);
+            padding: var(--space-2xl) 0;
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-xl);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-xl);
+        }
+
+        .footer-link {
+            color: var(--apple-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--apple-duration) var(--apple-ease);
+        }
+
+        .footer-link:hover {
+            color: var(--apple-blue);
+        }
+
+        /* Enhanced Newsletter */
+        .newsletter-section {
+            max-width: 600px;
+            margin: var(--space-2xl) auto 0;
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--apple-text);
+        }
+
+        .newsletter-description {
+            color: var(--apple-text-secondary);
+            margin-bottom: var(--space-lg);
+            font-size: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--space-sm);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: var(--space-md);
+            border: 1px solid var(--apple-border);
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all var(--apple-duration) var(--apple-ease);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        /* Enhanced Responsive */
+        @media (max-width: 1200px) {
+            .nav-links {
+                gap: var(--space-xl);
+                margin-left: var(--space-xl);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-lg);
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 0 var(--space-lg);
+                height: 64px;
+            }
+            
+            .main-content {
+                padding: var(--space-xl);
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stats-bar {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .incubator-stages {
+                flex-direction: column;
+            }
+            
+            .stage {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .modal-content {
+                padding: var(--space-xl);
+            }
+        }
+
+        /* Enhanced Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .visible {
+            display: block !important;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 { margin-bottom: var(--space-xs); }
+        .mb-2 { margin-bottom: var(--space-sm); }
+        .mb-3 { margin-bottom: var(--space-md); }
+        .mb-4 { margin-bottom: var(--space-lg); }
+        .mb-5 { margin-bottom: var(--space-xl); }
+        .mb-6 { margin-bottom: var(--space-2xl); }
+
+        .mt-1 { margin-top: var(--space-xs); }
+        .mt-2 { margin-top: var(--space-sm); }
+        .mt-3 { margin-top: var(--space-md); }
+        .mt-4 { margin-top: var(--space-lg); }
+        .mt-5 { margin-top: var(--space-xl); }
+        .mt-6 { margin-top: var(--space-2xl); }
+
+        .p-1 { padding: var(--space-xs); }
+        .p-2 { padding: var(--space-sm); }
+        .p-3 { padding: var(--space-md); }
+        .p-4 { padding: var(--space-lg); }
+        .p-5 { padding: var(--space-xl); }
+        .p-6 { padding: var(--space-2xl); }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-card">
+            <div class="login-logo">
+                <div class="login-icon">
+                    <span class="material-icons-round">rocket_launch</span>
+                </div>
+                <h1 style="font-size: 36px; font-weight: 700; margin-bottom: var(--space-xs);" class="text-gradient">GRAD+</h1>
+                <p style="color: var(--apple-text-secondary); font-size: 16px;">MySmartCity Zadar Initiative</p>
+            </div>
+
+            <div style="background: rgba(0, 122, 255, 0.1); border-radius: 14px; padding: var(--space-md); margin-bottom: var(--space-xl); text-align: center; border: 1px solid rgba(0, 122, 255, 0.2);">
+                <span class="material-icons-round" style="color: var(--apple-blue); vertical-align: middle; margin-right: var(--space-xs);">info</span>
+                <span style="font-size: 14px; color: var(--apple-blue); font-weight: 500;">Demo: test@test.com / 1234</span>
+            </div>
+
+            <div id="login-error" style="background: rgba(255, 59, 48, 0.1); color: var(--apple-red); padding: var(--space-md); border-radius: 12px; margin-bottom: var(--space-lg); display: none; border: 1px solid rgba(255, 59, 48, 0.2);">
+                <span class="material-icons-round" style="vertical-align: middle; margin-right: var(--space-xs);">error</span>
+                <span id="error-text">Invalid credentials</span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-input" value="test@test.com" placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" id="password" class="form-input" value="1234" placeholder="••••••••">
+            </div>
+
+            <button class="btn btn-primary" onclick="login()" style="width: 100%;">
+                <span id="login-text">Sign In to Dashboard</span>
+                <span id="login-loading" class="loading" style="display: none; margin-left: var(--space-sm);"></span>
+            </button>
+
+            <div style="text-align: center; margin-top: var(--space-xl);">
+                <p style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">By continuing, you agree to our Terms of Service<br>and Privacy Policy</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="app-container" style="display: none;">
+        <!-- Enhanced Navigation -->
+        <nav class="nav-bar" id="navbar">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <span class="material-icons-round">rocket_launch</span>
+                </div>
+                GRAD+
+            </a>
+
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                    <span class="material-icons-round" style="font-size: 20px;">dashboard</span>
+                    Dashboard
+                </a>
+                <a href="#challenges" class="nav-link" onclick="showSection('challenges')">
+                    <span class="material-icons-round" style="font-size: 20px;">location_city</span>
+                    Challenges
+                </a>
+                <a href="#incubator" class="nav-link" onclick="showSection('incubator')">
+                    <span class="material-icons-round" style="font-size: 20px;">psychology</span>
+                    Incubator
+                </a>
+                <a href="#analytics" class="nav-link" onclick="showSection('analytics')">
+                    <span class="material-icons-round" style="font-size: 20px;">analytics</span>
+                    Analytics
+                </a>
+                <a href="#community" class="nav-link" onclick="showSection('community')">
+                    <span class="material-icons-round" style="font-size: 20px;">forum</span>
+                    Community
+                </a>
+                <a href="#factcheck" class="nav-link" onclick="showSection('factcheck')">
+                    <span class="material-icons-round" style="font-size: 20px;">fact_check</span>
+                    Fact Check
+                </a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="notification-bell" onclick="showNotifications()">
+                    <span class="material-icons-round">notifications</span>
+                    <span class="notification-count">3</span>
+                </button>
+                <button class="btn btn-secondary" onclick="showSubmitModal()" style="padding: 12px 24px;">
+                    <span class="material-icons-round">add</span>
+                    Submit Idea
+                </button>
+                <div class="user-avatar" onclick="showUserProfile()">DU</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Enhanced Hero Section -->
+            <section class="hero-section animate-on-scroll" id="hero">
+                <div class="hero-badge">
+                    <span class="material-icons-round" style="font-size: 16px; vertical-align: middle; margin-right: 6px;">stars</span>
+                    ZADAR SMART CITY INITIATIVE
+                </div>
+                <h1 class="hero-title">Shape the Future of Zadar</h1>
+                <p class="hero-subtitle">Join GRAD+ in solving smart city challenges with AI-powered tools and community collaboration.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="showSubmitModal()">
+                        <span class="material-icons-round">add</span>
+                        Submit Your Idea
+                    </button>
+                    <button class="btn btn-secondary" onclick="showSection('community')">
+                        <span class="material-icons-round">explore</span>
+                        Explore Community
+                    </button>
+                </div>
+            </section>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="section">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Your Impact Dashboard</h2>
+                    <p class="section-subtitle">Track your contributions and see real-time impact metrics</p>
+                </div>
+
+                <!-- Enhanced Stats Bar (SADA SAMO NA DASHBOARDU) -->
+                <div class="stats-bar animate-on-scroll">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-impact">24.5K</div>
+                        <div class="stat-label">Total Impact Score</div>
+                        <div class="stat-trend trend-up">
+                            <span class="material-icons-round" style="font-size: 16px;">trending_up</span>
+                            +12% this month
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="active-users">1,248</div>
+                        <div class="stat-label">Active Innovators</div>
+                        <div class="stat-trend trend-up">
+                            <span class="material-icons-round" style="font-size: 16px;">trending_up</span>
+                            +5% this week
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="ideas-submitted">342</div>
+                        <div class="stat-label">Ideas Submitted</div>
+                        <div class="stat-trend trend-up">
+                            <span class="material-icons-round" style="font-size: 16px;">trending_up</span>
+                            +8% today
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="challenges-solved">28</div>
+                        <div class="stat-label">Challenges Solved</div>
+                        <div class="stat-trend trend-up">
+                            <span class="material-icons-round" style="font-size: 16px;">trending_up</span>
+                            +3 this week
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Enhanced Impact Score Card -->
+                    <div class="card animate-on-scroll">
+                        <div class="card-header">
+                            <h3 class="card-title">Personal Impact Score</h3>
+                            <div class="card-icon">
+                                <span class="material-icons-round">trending_up</span>
+                            </div>
+                        </div>
+                        <div style="text-align: center; padding: var(--space-xl) 0;">
+                            <div style="font-size: 88px; font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: var(--space-md); line-height: 1;" id="impact-score">87</div>
+                            <p style="color: var(--apple-text-secondary); margin-bottom: var(--space-sm); font-size: 16px;">Higher than 92% of users</p>
+                            <div style="display: inline-block; background: rgba(52, 199, 89, 0.1); color: var(--apple-green); padding: var(--space-xs) var(--space-md); border-radius: 20px; font-weight: 600; font-size: 14px;">
+                                <span class="material-icons-round" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">emoji_events</span>
+                                ELITE INNOVATOR
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: var(--space-xl);">
+                            <div style="text-align: center;">
+                                <div style="font-size: 28px; font-weight: 700; color: var(--zadar-blue);" id="ideas-count">3</div>
+                                <div style="font-size: 14px; color: var(--apple-text-secondary);">Ideas</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 28px; font-weight: 700; color: var(--zadar-light);" id="challenges-count">5</div>
+                                <div style="font-size: 14px; color: var(--apple-text-secondary);">Challenges</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 28px; font-weight: 700; color: var(--apple-green);" id="verified-count">12</div>
+                                <div style="font-size: 14px; color: var(--apple-text-secondary);">Verified</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Quick Actions -->
+                    <div class="card animate-on-scroll">
+                        <div class="card-header">
+                            <h3 class="card-title">Quick Actions</h3>
+                            <div class="card-icon">
+                                <span class="material-icons-round">bolt</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                            <button class="btn btn-secondary" onclick="showSubmitModal()" style="justify-content: flex-start; padding: var(--space-md) var(--space-lg);">
+                                <span class="material-icons-round">add_circle</span>
+                                Submit New Idea
+                            </button>
+                            <button class="btn btn-secondary" onclick="showSection('factcheck')" style="justify-content: flex-start; padding: var(--space-md) var(--space-lg);">
+                                <span class="material-icons-round">fact_check</span>
+                                Verify Information
+                            </button>
+                            <button class="btn btn-secondary" onclick="showSection('incubator')" style="justify-content: flex-start; padding: var(--space-md) var(--space-lg);">
+                                <span class="material-icons-round">psychology</span>
+                                Idea Incubator
+                            </button>
+                            <button class="btn btn-secondary" onclick="showSection('community')" style="justify-content: flex-start; padding: var(--space-md) var(--space-lg);">
+                                <span class="material-icons-round">forum</span>
+                                Community Feed
+                            </button>
+                            <button class="btn btn-success" onclick="showTutorial()" style="justify-content: flex-start; padding: var(--space-md) var(--space-lg); margin-top: var(--space-sm);">
+                                <span class="material-icons-round">play_circle</span>
+                                Platform Tour
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Recent Activity -->
+                    <div class="card animate-on-scroll">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Activity</h3>
+                            <div class="card-icon">
+                                <span class="material-icons-round">history</span>
+                            </div>
+                        </div>
+                        <div id="recent-activity" style="display: flex; flex-direction: column; gap: var(--space-md);">
+                            <!-- Activity loaded by JavaScript -->
+                        </div>
+                        <button class="btn btn-secondary" onclick="showAllActivity()" style="width: 100%; margin-top: var(--space-xl);">
+                            <span class="material-icons-round">list</span>
+                            View All Activity
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Enhanced Featured Challenges -->
+                <div class="section-header animate-on-scroll" style="margin-top: var(--space-2xl);">
+                    <h2 class="section-title">Featured Challenges</h2>
+                    <p class="section-subtitle">Top priority challenges from Zadar City Administration</p>
+                </div>
+
+                <div class="challenges-grid" id="featured-challenges">
+                    <!-- Featured challenges loaded by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Smart City Challenges Section -->
+            <section id="challenges-section" class="section" style="display: none;">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Smart City Challenges</h2>
+                    <p class="section-subtitle">Select a challenge and contribute your innovative solution</p>
+                </div>
+
+                <div class="challenges-grid" id="challenges-container">
+                    <!-- Challenges loaded by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Idea Incubator Section -->
+            <section id="incubator-section" class="section" style="display: none;">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Idea Incubator</h2>
+                    <p class="section-subtitle">Nurture your ideas through different development stages</p>
+                </div>
+
+                <div class="incubator-container">
+                    <div class="incubator-stages" id="incubator-stages">
+                        <!-- Stages loaded by JavaScript -->
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: var(--space-xl);">
+                        <p style="color: var(--apple-text-secondary); margin-bottom: var(--space-lg); font-size: 16px;">Drag ideas between stages to track their progress</p>
+                        <button class="btn btn-primary" onclick="addNewIdeaToIncubator()">
+                            <span class="material-icons-round">add</span>
+                            Add New Idea to Incubator
+                        </button>
+                        <button class="btn btn-secondary" onclick="showIncubatorStats()" style="margin-left: var(--space-sm);">
+                            <span class="material-icons-round">insights</span>
+                            View Stats
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Incubator Analytics -->
+                <div class="analytics-grid" style="margin-top: var(--space-2xl);">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="incubator-ideas">24</div>
+                        <div class="stat-label">Total in Incubator</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="avg-time">18</div>
+                        <div class="stat-label">Avg Days to Launch</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="success-rate">78%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="team-size">42</div>
+                        <div class="stat-label">Active Team Members</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Dashboard Section -->
+            <section id="analytics-section" class="section" style="display: none;">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Analytics Dashboard</h2>
+                    <p class="section-subtitle">Track impact metrics and participation statistics</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="total-ideas">342</div>
+                        <div class="stat-label">Total Ideas</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="avg-impact">76.5</div>
+                        <div class="stat-label">Avg. Impact Score</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="community-size">1,248</div>
+                        <div class="stat-label">Community Size</div>
+                    </div>
+                    <div class="stat-card animate-on-scroll">
+                        <div class="stat-value" id="verification-rate">94%</div>
+                        <div class="stat-label">Verified Claims</div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Impact Score Distribution Chart -->
+                <div class="chart-container animate-on-scroll">
+                    <div class="card-header">
+                        <h3 class="card-title">Impact Score Distribution</h3>
+                    </div>
+                    
+                    <div style="margin-bottom: var(--space-lg); display: flex; align-items: center; gap: var(--space-xl);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <div style="width: 16px; height: 16px; background: var(--gradient-primary); border-radius: 4px;"></div>
+                            <span style="font-size: 14px; color: var(--apple-text-secondary); font-weight: 500;">Your Ideas</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <div style="width: 16px; height: 16px; background: rgba(0, 122, 255, 0.15); border-radius: 4px;"></div>
+                            <span style="font-size: 14px; color: var(--apple-text-secondary); font-weight: 500;">Community Average</span>
+                        </div>
+                    </div>
+                    
+                    <div id="score-chart" class="chart-bars">
+                        <!-- Chart loaded by JavaScript -->
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-top: var(--space-xl); padding: 0 var(--space-lg);">
+                        <span style="font-size: 13px; color: var(--apple-text-secondary); font-weight: 500;">0-20</span>
+                        <span style="font-size: 13px; color: var(--apple-text-secondary); font-weight: 500;">21-40</span>
+                        <span style="font-size: 13px; color: var(--apple-text-secondary); font-weight: 500;">41-60</span>
+                        <span style="font-size: 13px; color: var(--apple-text-secondary); font-weight: 500;">61-80</span>
+                        <span style="font-size: 13px; color: var(--apple-text-secondary); font-weight: 500;">81-100</span>
+                    </div>
+                </div>
+
+                <!-- Additional Charts -->
+                <div class="card-grid" style="margin-top: var(--space-2xl);">
+                    <div class="card animate-on-scroll">
+                        <h3 class="card-title">Activity Timeline</h3>
+                        <div id="activity-timeline" style="height: 200px; display: flex; align-items: flex-end; gap: var(--space-sm); margin-top: var(--space-xl);">
+                            <!-- Timeline loaded by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <h3 class="card-title">Category Distribution</h3>
+                        <div id="category-distribution" style="height: 200px; display: flex; justify-content: center; align-items: center; margin-top: var(--space-xl);">
+                            <!-- Distribution loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Feed Section -->
+            <section id="community-section" class="section" style="display: none;">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">Community Feed</h2>
+                    <p class="section-subtitle">Connect with other innovators and share insights</p>
+                </div>
+
+                <div class="feed" id="community-feed">
+                    <!-- Community posts loaded by JavaScript -->
+                </div>
+                
+                <!-- Enhanced New Post Form -->
+                <div class="card animate-on-scroll" style="max-width: 680px; margin: var(--space-xl) auto 0;">
+                    <h3 style="font-size: 20px; margin-bottom: var(--space-lg); font-weight: 600;">Create New Post</h3>
+                    <textarea id="new-post-content" class="form-textarea" placeholder="What's on your mind? Share your thoughts with the community..." rows="4"></textarea>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-lg);">
+                        <div style="display: flex; gap: var(--space-sm);">
+                            <button class="btn btn-secondary" style="padding: 10px 20px;" onclick="attachFile()">
+                                <span class="material-icons-round">attach_file</span>
+                                Attach
+                            </button>
+                            <button class="btn btn-secondary" style="padding: 10px 20px;" onclick="addPoll()">
+                                <span class="material-icons-round">poll</span>
+                                Poll
+                            </button>
+                        </div>
+                        <button class="btn btn-primary" onclick="createNewPost()">
+                            <span class="material-icons-round">send</span>
+                            Publish Post
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fact Check Assistant Section -->
+            <section id="factcheck-section" class="section" style="display: none;">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-title">AI Fact Check Assistant</h2>
+                    <p class="section-subtitle">Verify claims about Zadar with our AI-powered tool</p>
+                </div>
+
+                <div class="fact-check-container animate-on-scroll">
+                    <div style="text-align: center; margin-bottom: var(--space-xl);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-lg); color: white; font-size: 36px;">
+                            <span class="material-icons-round">psychology</span>
+                        </div>
+                        <h3 style="font-size: 24px; font-weight: 700; margin-bottom: var(--space-xs);">AI Verification Engine</h3>
+                        <p style="color: var(--apple-text-secondary); font-size: 15px;">Powered by advanced machine learning models</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Enter claim to verify</label>
+                        <textarea id="factcheck-input" class="form-textarea" placeholder="Paste claim or statement about Zadar..."></textarea>
+                    </div>
+
+                    <div style="margin: var(--space-xl) 0;">
+                        <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: var(--space-sm); font-weight: 500;">Try sample claims:</p>
+                        <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                            <button class="sample-claim" onclick="setSampleClaim('Zadar reduced CO₂ emissions by 40% in 2023')" style="background: rgba(0, 122, 255, 0.1); color: var(--apple-blue); border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s;">CO₂ reduced by 40%</button>
+                            <button class="sample-claim" onclick="setSampleClaim('Sea Organ generates 20% more energy this year')" style="background: rgba(0, 122, 255, 0.1); color: var(--apple-blue); border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s;">Sea Organ energy</button>
+                            <button class="sample-claim" onclick="setSampleClaim('Tourist numbers increased by 60% in 2023')" style="background: rgba(0, 122, 255, 0.1); color: var(--apple-blue); border: none; padding: 10px 20px; border-radius: 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s;">Tourist increase</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="checkFact()" style="width: 100%; padding: var(--space-md);">
+                        <span id="check-text">Verify with AI Analysis</span>
+                        <span id="check-loading" class="loading" style="display: none; margin-left: var(--space-sm);"></span>
+                    </button>
+
+                    <div id="ai-response" class="ai-response">
+                        <!-- AI response will appear here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Enhanced Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div>
+                    <div class="logo" style="margin-bottom: var(--space-md);">
+                        <div class="logo-icon">
+                            <span class="material-icons-round">rocket_launch</span>
+                        </div>
+                        GRAD+
+                    </div>
+                    <p style="color: var(--apple-text-secondary); font-size: 14px; line-height: 1.6;">MySmartCity Zadar Initiative • Transforming ideas into urban solutions through youth innovation.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link" onclick="showPrivacy()">Privacy Policy</a>
+                    <a href="#" class="footer-link" onclick="showTerms()">Terms of Service</a>
+                    <a href="#" class="footer-link" onclick="showContact()">Contact</a>
+                    <a href="#" class="footer-link" onclick="showAbout()">About</a>
+                </div>
+            </div>
+            
+            <!-- Enhanced Newsletter Subscription -->
+            <div class="newsletter-section">
+                <h3 class="newsletter-title">Stay Updated</h3>
+                <p class="newsletter-description">Get weekly updates on new challenges, featured ideas, and platform improvements</p>
+                <div class="newsletter-form">
+                    <input type="email" id="newsletter-email" placeholder="Your email address" class="newsletter-input">
+                    <button class="btn btn-primary" onclick="subscribeNewsletter()" style="white-space: nowrap;">
+                        <span class="material-icons-round">send</span>
+                        Subscribe
+                    </button>
+                </div>
+                <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: var(--space-md);">By subscribing, you agree to our Privacy Policy and consent to receive updates.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Enhanced Submit Idea Modal -->
+    <div id="submit-modal" class="modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+                <h2 style="font-size: 28px; font-weight: 700;">Submit New Idea</h2>
+                <button onclick="closeModal()" style="background: none; border: none; color: var(--apple-text-secondary); cursor: pointer; padding: var(--space-xs); border-radius: 10px; transition: background 0.3s;">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+
+            <form id="idea-form">
+                <div class="form-group">
+                    <label class="form-label">Idea Title *</label>
+                    <input type="text" id="modal-idea-title" class="form-input" placeholder="What's your idea called?" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Description *</label>
+                    <textarea id="modal-idea-description" class="form-textarea" placeholder="Describe your idea in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Category *</label>
+                    <select id="modal-idea-category" class="form-select" required>
+                        <option value="">Select a category</option>
+                        <option value="Environment">Environment & Sustainability</option>
+                        <option value="Technology">Technology & Innovation</option>
+                        <option value="Transportation">Transportation & Mobility</option>
+                        <option value="Tourism">Tourism & Culture</option>
+                        <option value="Education">Education & Learning</option>
+                        <option value="Energy">Energy & Resources</option>
+                        <option value="Social">Social Innovation</option>
+                        <option value="Urban">Urban Planning</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Related Challenge</label>
+                    <select id="modal-idea-challenge" class="form-select">
+                        <option value="">None</option>
+                        <option value="1">Reduce CO₂ Emissions</option>
+                        <option value="2">Sea Promenade Accessibility</option>
+                        <option value="3">Digital Historical Sites</option>
+                        <option value="4">Sustainable Tourism</option>
+                        <option value="5">Smart Waste Management</option>
+                    </select>
+                </div>
+
+                <div id="submit-success" style="background: rgba(52, 199, 89, 0.1); color: var(--apple-green); padding: var(--space-lg); border-radius: 16px; margin-bottom: var(--space-xl); display: none; border: 1px solid rgba(52, 199, 89, 0.2);">
+                    <span class="material-icons-round" style="vertical-align: middle; margin-right: var(--space-sm); font-size: 24px;">check_circle</span>
+                    <div style="display: inline-block; vertical-align: middle;">
+                        <div style="font-weight: 600; font-size: 16px;">Idea submitted successfully!</div>
+                        <div>Impact Score: <strong id="modal-impact-score" style="font-size: 18px;">0</strong></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="modal-submit-text">Submit Idea for Review</span>
+                    <span id="modal-submit-loading" class="loading" style="display: none; margin-left: var(--space-sm);"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Enhanced Notifications Modal -->
+    <div id="notifications-modal" class="modal">
+        <div class="modal-content" style="max-width: 480px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+                <h2 style="font-size: 28px; font-weight: 700;">Notifications</h2>
+                <div style="display: flex; gap: var(--space-sm);">
+                    <button onclick="markAllAsRead()" style="background: none; border: none; color: var(--apple-text-secondary); cursor: pointer; padding: var(--space-xs); border-radius: 10px; transition: background 0.3s;">
+                        <span class="material-icons-round">done_all</span>
+                    </button>
+                    <button onclick="closeNotifications()" style="background: none; border: none; color: var(--apple-text-secondary); cursor: pointer; padding: var(--space-xs); border-radius: 10px; transition: background 0.3s;">
+                        <span class="material-icons-round">close</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="notifications-list">
+                <!-- Notifications loaded by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced User Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content" style="max-width: 560px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+                <h2 style="font-size: 28px; font-weight: 700;">Your Profile</h2>
+                <button onclick="closeProfile()" style="background: none; border: none; color: var(--apple-text-secondary); cursor: pointer; padding: var(--space-xs); border-radius: 10px; transition: background 0.3s;">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                <div class="user-avatar" style="width: 100px; height: 100px; font-size: 42px; margin: 0 auto var(--space-lg);">DU</div>
+                <h3 style="font-size: 24px; font-weight: 700; margin-bottom: var(--space-xs);">Demo User</h3>
+                <p style="color: var(--apple-text-secondary); font-size: 16px;">Elite Innovator • Zadar</p>
+                <div style="display: inline-block; background: var(--gradient-primary); color: white; padding: var(--space-xs) var(--space-lg); border-radius: 20px; font-weight: 600; font-size: 14px; margin-top: var(--space-sm);">
+                    <span class="material-icons-round" style="font-size: 16px; vertical-align: middle; margin-right: 6px;">verified</span>
+                    Verified Contributor
+                </div>
+            </div>
+            
+            <div style="background: var(--apple-bg); border-radius: 20px; padding: var(--space-xl); margin-bottom: var(--space-xl);">
+                <h4 style="font-size: 18px; font-weight: 700; margin-bottom: var(--space-lg);">About Me</h4>
+                <p style="color: var(--apple-text); line-height: 1.6; margin-bottom: var(--space-xl);">Passionate about sustainable tech solutions for Zadar. Currently studying Computer Science and working on smart city projects. Focused on environmental innovation and community impact.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+                    <div>
+                        <div style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: var(--space-xs);">Joined</div>
+                        <div style="font-weight: 600; color: var(--apple-text);">October 2023</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: var(--space-xs);">Impact Score</div>
+                        <div style="font-weight: 600; color: var(--apple-text);">92 (Top 5%)</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: var(--space-xs);">Ideas Submitted</div>
+                        <div style="font-weight: 600; color: var(--apple-text);">7</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: var(--space-xs);">Verified Claims</div>
+                        <div style="font-weight: 600; color: var(--apple-text);">45</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: var(--space-md);">
+                <button class="btn btn-secondary" onclick="editProfile()" style="flex: 1;">
+                    <span class="material-icons-round">edit</span>
+                    Edit Profile
+                </button>
+                <button class="btn btn-primary" onclick="logout()" style="flex: 1;">
+                    <span class="material-icons-round">logout</span>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Tutorial Modal -->
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-xl);">
+                <h2 style="font-size: 28px; font-weight: 700;">Platform Tour</h2>
+                <button onclick="closeTutorial()" style="background: none; border: none; color: var(--apple-text-secondary); cursor: pointer; padding: var(--space-xs); border-radius: 10px; transition: background 0.3s;">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            
+            <div style="background: var(--gradient-primary); color: white; padding: var(--space-xl); border-radius: 20px; margin-bottom: var(--space-xl);">
+                <div style="text-align: center; margin-bottom: var(--space-lg);">
+                    <span class="material-icons-round" style="font-size: 64px; margin-bottom: var(--space-lg);">play_circle</span>
+                    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: var(--space-sm);">Welcome to GRAD+</h3>
+                    <p>Learn how to make the most of our platform in this 2-minute tour</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-xs);">1</div>
+                        <div style="font-weight: 600;">Submit Ideas</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-xs);">2</div>
+                        <div style="font-weight: 600;">Join Challenges</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-xs);">3</div>
+                        <div style="font-weight: 600;">Use Incubator</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-xs);">4</div>
+                        <div style="font-weight: 600;">Engage Community</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: var(--space-md);">
+                <button class="btn btn-secondary" onclick="skipTutorial()" style="flex: 1;">
+                    Skip Tour
+                </button>
+                <button class="btn btn-primary" onclick="startTutorial()" style="flex: 1;">
+                    <span class="material-icons-round">play_arrow</span>
+                    Start Tour
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============ ENHANCED MOCK DATA ============
+        const enhancedChallenges = [
+            {
+                id: 1,
+                title: "Carbon-Neutral Historic Center",
+                description: "Transform Zadar's historic center into a carbon-neutral zone through smart energy solutions and sustainable tourism practices.",
+                category: "Environment",
+                progress: 72,
+                deadline: "2024-12-31",
+                ideas: 24,
+                priority: "Critical",
+                reward: "$50,000 Grant",
+                featured: true
+            },
+            {
+                id: 2,
+                title: "Universal Sea Promenade Design",
+                description: "Create a fully accessible sea promenade with smart navigation and inclusive design for all abilities and ages.",
+                category: "Accessibility",
+                progress: 58,
+                deadline: "2024-08-31",
+                ideas: 18,
+                priority: "High",
+                reward: "$30,000 Grant",
+                featured: true
+            },
+            {
+                id: 3,
+                title: "Augmented Historical Experience",
+                description: "Develop immersive AR experiences that bring 3000 years of Zadar's history to life through interactive digital layers.",
+                category: "Technology",
+                progress: 85,
+                deadline: "2024-10-15",
+                ideas: 32,
+                priority: "Medium",
+                reward: "$25,000 Grant"
+            },
+            {
+                id: 4,
+                title: "Sustainable Tourism Intelligence",
+                description: "Build AI-powered systems to optimize tourist flow, reduce environmental impact, and enhance visitor experience.",
+                category: "Tourism",
+                progress: 64,
+                deadline: "2024-09-30",
+                ideas: 21,
+                priority: "High",
+                reward: "$40,000 Grant"
+            }
+        ];
+
+        const enhancedIncubatorStages = [
+            {
+                id: 1,
+                title: "Discovery",
+                icon: "explore",
+                color: "#FF9500",
+                description: "Initial research and concept development",
+                ideas: [
+                    { id: 1, title: "Solar-powered benches", description: "Public seating with USB charging", impact: 85 },
+                    { id: 2, title: "AI waste sorting", description: "Smart recycling classification", impact: 92 }
+                ]
+            },
+            {
+                id: 2,
+                title: "Validation",
+                icon: "verified",
+                color: "#007AFF",
+                description: "Market research and feasibility testing",
+                ideas: [
+                    { id: 3, title: "Smart parking system", description: "Real-time availability tracking", impact: 88 },
+                    { id: 4, title: "Sea water purification", description: "Sustainable drinking water", impact: 95 }
+                ]
+            },
+            {
+                id: 3,
+                title: "Prototyping",
+                icon: "build",
+                color: "#34C759",
+                description: "Building and testing prototypes",
+                ideas: [
+                    { id: 5, title: "AR city guide", description: "Interactive historical tours", impact: 91 },
+                    { id: 6, title: "Energy monitoring", description: "Real-time consumption analytics", impact: 87 }
+                ]
+            },
+            {
+                id: 4,
+                title: "Testing",
+                icon: "science",
+                color: "#AF52DE",
+                description: "User testing and feedback collection",
+                ideas: [
+                    { id: 7, title: "Smart lighting network", description: "Adaptive street illumination", impact: 84 }
+                ]
+            },
+            {
+                id: 5,
+                title: "Scaling",
+                icon: "rocket_launch",
+                color: "#1C3E95",
+                description: "City-wide deployment and implementation",
+                ideas: [
+                    { id: 8, title: "Digital city services", description: "Unified municipal platform", impact: 96 }
+                ]
+            }
+        ];
+
+        const enhancedCommunityPosts = [
+            {
+                id: 1,
+                user: "Ana K.",
+                role: "Environmental Engineer",
+                avatar: "AK",
+                content: "Just completed the carbon footprint analysis for our solar bench project. Initial results show 85% reduction in energy costs compared to traditional lighting!",
+                time: "2 hours ago",
+                likes: 42,
+                comments: [
+                    { user: "Marko Z.", text: "Great analysis! Have you considered integrating IoT sensors?", time: "1 hour ago" },
+                    { user: "Ivan P.", text: "Does the city have budget for installation?", time: "45 min ago" }
+                ],
+                verified: true
+            },
+            {
+                id: 2,
+                user: "Marko Z.",
+                role: "Tech Lead",
+                avatar: "MZ",
+                content: "Looking for Unity developers to collaborate on our AR historical tour project. We have access to city archives and need help with 3D modeling.",
+                time: "5 hours ago",
+                likes: 28,
+                comments: [
+                    { user: "Ivana M.", text: "I have access to city archives, let's connect!", time: "3 hours ago" }
+                ],
+                verified: true
+            },
+            {
+                id: 3,
+                user: "Ivana M.",
+                role: "Urban Planner",
+                avatar: "IM",
+                content: "The city council has approved additional funding for accessibility projects. Great opportunity to work on the sea promenade redesign!",
+                time: "1 day ago",
+                likes: 56,
+                comments: [],
+                verified: true
+            }
+        ];
+
+        const enhancedNotifications = [
+            { id: 1, text: "Your idea 'Solar-Powered Sea Organ' has been selected for city funding!", time: "10 min ago", read: false, type: "success" },
+            { id: 2, text: "New comment on your carbon footprint analysis post", time: "2 hours ago", read: false, type: "comment" },
+            { id: 3, text: "Weekly impact score update: +12 points (New rank: Elite Innovator)", time: "1 day ago", read: true, type: "achievement" },
+            { id: 4, text: "Deadline reminder: Sustainable Tourism Challenge ends in 3 days", time: "2 days ago", read: true, type: "reminder" }
+        ];
+
+        let enhancedUserIdeas = JSON.parse(localStorage.getItem('enhancedIdeas')) || [
+            {
+                id: 1001,
+                title: "Solar-Powered Sea Organ Enhancement",
+                description: "Integrate solar panels with the Sea Organ to power lighting and environmental sensors",
+                category: "Energy",
+                impactScore: 94,
+                date: "2023-10-15",
+                status: "Prototyping",
+                tags: ["solar", "renewable", "tourism"]
+            },
+            {
+                id: 1002,
+                title: "Augmented Reality Historical Layers",
+                description: "AR app showing Zadar's history through interactive time-based overlays",
+                category: "Technology",
+                impactScore: 91,
+                date: "2023-10-18",
+                status: "Validation",
+                tags: ["AR", "history", "tourism"]
+            },
+            {
+                id: 1003,
+                title: "Smart Waste Management Network",
+                description: "IoT sensors in waste bins for optimized collection routes and recycling analytics",
+                category: "Environment",
+                impactScore: 87,
+                date: "2023-10-20",
+                status: "Discovery",
+                tags: ["IoT", "recycling", "analytics"]
+            }
+        ];
+
+        // ============ ENHANCED APP STATE ============
+        let enhancedUser = {
+            name: "Demo User",
+            email: "test@test.com",
+            impactScore: 92,
+            rank: "Elite Innovator",
+            joined: "October 2023",
+            ideas: 7,
+            verified: 45,
+            teams: 3
+        };
+
+        let activeSection = 'dashboard';
+        let dragSource = null;
+
+        // ============ ENHANCED INITIALIZATION ============
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check login status
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                showEnhancedApp();
+            }
+            
+            // Initialize scroll animations
+            initEnhancedScrollAnimations();
+            
+            // Setup drag and drop
+            initEnhancedDragAndDrop();
+        });
+
+        // ============ ENHANCED AUTHENTICATION ============
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('login-error');
+            const loginText = document.getElementById('login-text');
+            const loginLoading = document.getElementById('login-loading');
+
+            loginText.style.display = 'none';
+            loginLoading.style.display = 'inline-block';
+
+            setTimeout(() => {
+                if (email === 'test@test.com' && password === '1234') {
+                    localStorage.setItem('isLoggedIn', 'true');
+                    showEnhancedApp();
+                } else {
+                    document.getElementById('error-text').textContent = 
+                        'Invalid credentials. Use: test@test.com / 1234';
+                    errorDiv.style.display = 'block';
+                }
+
+                loginText.style.display = 'inline';
+                loginLoading.style.display = 'none';
+            }, 1000);
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('isLoggedIn');
+                document.getElementById('app').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'flex';
+                document.getElementById('login-error').style.display = 'none';
+            }
+        }
+
+        function showEnhancedApp() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            loadEnhancedDashboard();
+            
+            // Start scroll animations
+            setTimeout(checkScroll, 100);
+            
+            // Update notification count
+            updateEnhancedNotificationCount();
+            
+            // Show welcome notification
+            showEnhancedNotification("Welcome back, " + enhancedUser.name + "!");
+        }
+
+        // ============ ENHANCED NAVIGATION ============
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('[id$="-section"]').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show selected section
+            document.getElementById(`${sectionId}-section`).style.display = 'block';
+            activeSection = sectionId;
+
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
+
+            // Load section data
+            switch(sectionId) {
+                case 'dashboard':
+                    loadEnhancedDashboard();
+                    break;
+                case 'challenges':
+                    loadEnhancedChallenges();
+                    break;
+                case 'incubator':
+                    loadEnhancedIncubator();
+                    break;
+                case 'analytics':
+                    loadEnhancedAnalytics();
+                    break;
+                case 'community':
+                    loadEnhancedCommunity();
+                    break;
+                case 'factcheck':
+                    // Already loaded
+                    break;
+            }
+
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============ ENHANCED SCROLL ANIMATIONS ============
+        function initEnhancedScrollAnimations() {
+            window.addEventListener('scroll', function() {
+                // Navbar scroll effect
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 20) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                // Animate on scroll elements
+                checkScroll();
+            });
+        }
+
+        function checkScroll() {
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // ============ ENHANCED DRAG AND DROP ============
+        function initEnhancedDragAndDrop() {
+            document.addEventListener('dragstart', function(e) {
+                if (e.target.classList.contains('idea-drag')) {
+                    dragSource = {
+                        element: e.target,
+                        stageId: e.target.closest('.stage').dataset.stageId
+                    };
+                    e.dataTransfer.setData('text/plain', e.target.dataset.ideaId);
+                    e.target.style.opacity = '0.5';
+                }
+            });
+
+            document.addEventListener('dragend', function(e) {
+                if (e.target.classList.contains('idea-drag')) {
+                    e.target.style.opacity = '1';
+                    dragSource = null;
+                }
+            });
+
+            document.addEventListener('dragover', function(e) {
+                if (e.target.classList.contains('stage-ideas') || 
+                    e.target.classList.contains('idea-drag')) {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    
+                    // Visual feedback
+                    const stage = e.target.closest('.stage-ideas') || e.target;
+                    stage.style.backgroundColor = 'rgba(0, 122, 255, 0.05)';
+                }
+            });
+
+            document.addEventListener('dragleave', function(e) {
+                if (e.target.classList.contains('stage-ideas') || 
+                    e.target.classList.contains('idea-drag')) {
+                    e.target.style.backgroundColor = '';
+                }
+            });
+
+            document.addEventListener('drop', function(e) {
+                e.preventDefault();
+                
+                if (e.target.classList.contains('stage-ideas') || 
+                    e.target.classList.contains('idea-drag')) {
+                    e.target.style.backgroundColor = '';
+                    
+                    const stage = e.target.closest('.stage');
+                    const ideaId = e.dataTransfer.getData('text/plain');
+                    
+                    if (dragSource && stage && ideaId) {
+                        moveEnhancedIdeaToStage(ideaId, stage.dataset.stageId);
+                    }
+                }
+            });
+        }
+
+        function moveEnhancedIdeaToStage(ideaId, newStageId) {
+            let sourceStage = null;
+            let targetStage = null;
+            let idea = null;
+            
+            enhancedIncubatorStages.forEach(stage => {
+                // Find source stage
+                const ideaIndex = stage.ideas.findIndex(i => i.id == ideaId);
+                if (ideaIndex > -1) {
+                    sourceStage = stage;
+                    idea = stage.ideas.splice(ideaIndex, 1)[0];
+                }
+                
+                // Find target stage
+                if (stage.id == newStageId) {
+                    targetStage = stage;
+                }
+            });
+            
+            if (idea && targetStage) {
+                targetStage.ideas.push(idea);
+                
+                // Show success message
+                showEnhancedNotification(`Idea "${idea.title}" moved to ${targetStage.title} stage`);
+                
+                // Reload incubator
+                loadEnhancedIncubator();
+            }
+        }
+
+        // ============ ENHANCED DASHBOARD ============
+        function loadEnhancedDashboard() {
+            // Update impact score
+            document.getElementById('impact-score').textContent = enhancedUser.impactScore;
+            
+            // Update counts
+            document.getElementById('ideas-count').textContent = enhancedUser.ideas;
+            
+            // Load recent activity
+            const activityContainer = document.getElementById('recent-activity');
+            const activities = [
+                { 
+                    icon: 'add_circle', 
+                    text: 'Submitted "Smart Parking System" idea', 
+                    time: '2 hours ago',
+                    color: '#007AFF'
+                },
+                { 
+                    icon: 'thumb_up', 
+                    text: 'Liked 3 community posts', 
+                    time: '5 hours ago',
+                    color: '#34C759'
+                },
+                { 
+                    icon: 'fact_check', 
+                    text: 'Verified 2 claims about Zadar', 
+                    time: '1 day ago',
+                    color: '#AF52DE'
+                },
+                { 
+                    icon: 'trending_up', 
+                    text: 'Impact score increased by 12 points', 
+                    time: '2 days ago',
+                    color: '#FF9500'
+                },
+                { 
+                    icon: 'groups', 
+                    text: 'Joined Sustainable Tourism team', 
+                    time: '3 days ago',
+                    color: '#1C3E95'
+                }
+            ];
+            
+            activityContainer.innerHTML = activities.map(activity => `
+                <div style="display: flex; gap: var(--space-md); align-items: flex-start; padding: var(--space-md); background: rgba(0,0,0,0.02); border-radius: 12px; transition: background 0.3s;">
+                    <div style="width: 36px; height: 36px; border-radius: 10px; background: ${activity.color}; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+                        <span class="material-icons-round" style="font-size: 18px;">${activity.icon}</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 14px; color: var(--apple-text); font-weight: 500;">${activity.text}</div>
+                        <div style="font-size: 12px; color: var(--apple-text-secondary); margin-top: 2px;">${activity.time}</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Load featured challenges
+            const featuredContainer = document.getElementById('featured-challenges');
+            const featured = enhancedChallenges.filter(c => c.featured);
+            
+            featuredContainer.innerHTML = featured.map(challenge => `
+                <div class="challenge-card animate-on-scroll">
+                    <div class="challenge-header">
+                        <div class="challenge-title">${challenge.title}</div>
+                        <div class="challenge-category">${challenge.category}</div>
+                    </div>
+                    <div class="challenge-description">${challenge.description}</div>
+                    
+                    <div style="display: flex; gap: var(--space-xl); margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+                        <div class="challenge-meta-item">
+                            <span class="material-icons-round challenge-meta-icon">lightbulb</span>
+                            <span>${challenge.ideas} ideas</span>
+                        </div>
+                        <div class="challenge-meta-item">
+                            <span class="material-icons-round challenge-meta-icon">event</span>
+                            <span>${challenge.deadline}</span>
+                        </div>
+                        <div class="challenge-meta-item">
+                            <span class="material-icons-round challenge-meta-icon">priority_high</span>
+                            <span style="color: var(--apple-orange); font-weight: 600;">${challenge.priority}</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0, 122, 255, 0.05); padding: var(--space-md); border-radius: 12px; margin-bottom: var(--space-lg);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <span class="material-icons-round" style="color: var(--apple-green);">emoji_events</span>
+                            <div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">Reward</div>
+                                <div style="font-size: 16px; color: var(--apple-green); font-weight: 700;">${challenge.reward}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Community Progress</span>
+                            <span>${challenge.progress}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${challenge.progress}%"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="submitForChallenge(${challenge.id})" style="width: 100%; margin-top: var(--space-lg);">
+                        <span class="material-icons-round">add</span>
+                        Submit Solution
+                    </button>
+                </div>
+            `).join('');
+            
+            // Animate progress bars
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 100);
+            
+            checkScroll();
+        }
+
+        // ============ ENHANCED CHALLENGES ============
+        function loadEnhancedChallenges() {
+            const container = document.getElementById('challenges-container');
+            container.innerHTML = enhancedChallenges.map(challenge => `
+                <div class="challenge-card animate-on-scroll">
+                    <div class="challenge-header">
+                        <div class="challenge-title">${challenge.title}</div>
+                        <div class="challenge-category">${challenge.category}</div>
+                    </div>
+                    <div class="challenge-description">${challenge.description}</div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-top: var(--space-lg); margin-bottom: var(--space-xl);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 122, 255, 0.1); display: flex; align-items: center; justify-content: center; color: var(--apple-blue);">
+                                <span class="material-icons-round">lightbulb</span>
+                            </div>
+                            <div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">Ideas</div>
+                                <div style="font-size: 16px; font-weight: 700; color: var(--apple-text);">${challenge.ideas}</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(52, 199, 89, 0.1); display: flex; align-items: center; justify-content: center; color: var(--apple-green);">
+                                <span class="material-icons-round">emoji_events</span>
+                            </div>
+                            <div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary);">Reward</div>
+                                <div style="font-size: 16px; font-weight: 700; color: var(--apple-green);">${challenge.reward}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>${challenge.progress}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${challenge.progress}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--space-sm); margin-top: var(--space-xl);">
+                        <button class="btn btn-primary" onclick="submitForChallenge(${challenge.id})" style="flex: 1;">
+                            <span class="material-icons-round">add</span>
+                            Submit Idea
+                        </button>
+                        <button class="btn btn-secondary" onclick="viewChallengeDetails(${challenge.id})" style="flex: 1;">
+                            <span class="material-icons-round">info</span>
+                            Details
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Animate progress bars
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 100);
+            
+            checkScroll();
+        }
+
+        function submitForChallenge(challengeId) {
+            showSubmitModal();
+            showEnhancedNotification("Opening submission form for challenge #" + challengeId);
+        }
+
+        // ============ ENHANCED INCUBATOR ============
+        function loadEnhancedIncubator() {
+            const container = document.getElementById('incubator-stages');
+            container.innerHTML = enhancedIncubatorStages.map(stage => `
+                <div class="stage animate-on-scroll" data-stage-id="${stage.id}">
+                    <div class="stage-header">
+                        <div class="stage-icon" style="background: ${stage.color}">
+                            <span class="material-icons-round">${stage.icon}</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="stage-title">${stage.title}</div>
+                            <div class="stage-count">${stage.ideas.length} ideas</div>
+                            <div style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 2px;">${stage.description}</div>
+                        </div>
+                    </div>
+                    <div class="stage-ideas">
+                        ${stage.ideas.map(idea => `
+                            <div class="idea-drag" draggable="true" data-idea-id="${idea.id}" style="padding: var(--space-md); border: 2px dashed var(--apple-border); border-radius: 12px; margin-bottom: var(--space-sm); cursor: grab; transition: all 0.3s;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-xs);">
+                                    <div style="font-size: 15px; font-weight: 600; color: var(--apple-text);">${idea.title}</div>
+                                    <div style="background: ${stage.color}; color: white; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600;">${idea.impact}</div>
+                                </div>
+                                <div style="font-size: 13px; color: var(--apple-text-secondary); margin-bottom: var(--space-sm);">${idea.description}</div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span class="material-icons-round" style="color: var(--apple-text-secondary); font-size: 18px;">drag_handle</span>
+                                    <button class="btn btn-secondary" onclick="viewIdeaDetails(${idea.id})" style="padding: 4px 10px; font-size: 12px;">
+                                        <span class="material-icons-round" style="font-size: 14px;">visibility</span>
+                                        View
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                        
+                        ${stage.ideas.length === 0 ? `
+                            <div style="text-align: center; padding: 40px 20px; color: var(--apple-text-secondary); font-size: 14px;">
+                                <span class="material-icons-round" style="font-size: 40px; margin-bottom: var(--space-sm); opacity: 0.3;">inbox</span>
+                                <div style="font-weight: 500; margin-bottom: 4px;">No ideas in this stage</div>
+                                <div style="font-size: 12px;">Drag ideas here to move them to this stage</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+            
+            checkScroll();
+        }
+
+        function addNewIdeaToIncubator() {
+            const newIdea = {
+                id: Date.now(),
+                title: "New Smart City Idea",
+                description: "Describe your innovative solution here",
+                impact: 75
+            };
+            
+            enhancedIncubatorStages[0].ideas.push(newIdea);
+            loadEnhancedIncubator();
+            
+            showEnhancedNotification("New idea added to Discovery stage");
+        }
+
+        // ============ ENHANCED ANALYTICS ============
+        function loadEnhancedAnalytics() {
+            // Generate enhanced score distribution chart
+            generateEnhancedScoreChart();
+            
+            // Generate activity timeline
+            generateEnhancedActivityTimeline();
+            
+            // Generate category distribution
+            generateEnhancedCategoryDistribution();
+            
+            checkScroll();
+        }
+
+        function generateEnhancedScoreChart() {
+            const chartContainer = document.getElementById('score-chart');
+            
+            // Score ranges with enhanced data
+            const scoreRanges = [
+                { range: "0-20", yourIdeas: 0, community: 8 },
+                { range: "21-40", yourIdeas: 1, community: 15 },
+                { range: "41-60", yourIdeas: 2, community: 32 },
+                { range: "61-80", yourIdeas: 3, community: 48 },
+                { range: "81-100", yourIdeas: 4, community: 28 }
+            ];
+            
+            // Calculate max value for scaling
+            const maxValue = Math.max(
+                ...scoreRanges.map(r => r.yourIdeas),
+                ...scoreRanges.map(r => r.community)
+            );
+            
+            // Clear and generate chart
+            chartContainer.innerHTML = '';
+            
+            // Add horizontal grid lines
+            for (let i = 0; i <= 5; i++) {
+                const y = i * 20;
+                chartContainer.innerHTML += `
+                    <div style="position: absolute; left: var(--space-lg); right: var(--space-lg); height: 1px; background: rgba(0,0,0,0.05); bottom: ${y}%; z-index: 0;"></div>
+                `;
+            }
+            
+            // Generate bars for each range
+            scoreRanges.forEach((range, index) => {
+                const yourHeight = (range.yourIdeas / maxValue) * 180;
+                const communityHeight = (range.community / maxValue) * 180;
+                
+                chartContainer.innerHTML += `
+                    <div class="chart-bar-group">
+                        <!-- Community average (background) -->
+                        <div class="chart-bar-community" style="height: ${communityHeight}px;"></div>
+                        
+                        <!-- Your ideas (foreground) -->
+                        <div class="chart-bar-user" style="height: ${yourHeight}px;"></div>
+                        
+                        <!-- Range label -->
+                        <div class="chart-label">${range.range}</div>
+                        
+                        <!-- Tooltip on hover -->
+                        <div class="chart-tooltip">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                                <div style="width: 10px; height: 10px; background: var(--gradient-primary); border-radius: 3px;"></div>
+                                <div>
+                                    <div style="font-weight: 700; color: var(--apple-text); font-size: 13px;">Your Ideas</div>
+                                    <div style="font-size: 20px; font-weight: 800; color: var(--zadar-blue);">${range.yourIdeas}</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <div style="width: 10px; height: 10px; background: rgba(0, 122, 255, 0.15); border-radius: 3px;"></div>
+                                <div>
+                                    <div style="font-weight: 700; color: var(--apple-text); font-size: 13px;">Community</div>
+                                    <div style="font-size: 20px; font-weight: 800; color: var(--apple-blue);">${range.community}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Add hover effects
+            setTimeout(() => {
+                document.querySelectorAll('.chart-bar-group').forEach((column, index) => {
+                    const bar = column.querySelector('.chart-bar-user');
+                    const tooltip = column.querySelector('.chart-tooltip');
+                    
+                    column.addEventListener('mouseenter', () => {
+                        bar.style.transform = 'scale(1.05)';
+                        tooltip.style.opacity = '1';
+                        tooltip.style.transform = 'translateY(0)';
+                    });
+                    
+                    column.addEventListener('mouseleave', () => {
+                        bar.style.transform = 'scale(1)';
+                        tooltip.style.opacity = '0';
+                        tooltip.style.transform = 'translateY(10px)';
+                    });
+                });
+                
+                // Animate bars
+                document.querySelectorAll('.chart-bar-community, .chart-bar-user').forEach((bar, index) => {
+                    setTimeout(() => {
+                        bar.style.height = bar.style.height;
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+        function generateEnhancedActivityTimeline() {
+            const timelineContainer = document.getElementById('activity-timeline');
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            const activity = [45, 68, 92, 57, 84, 32, 78];
+            const maxActivity = Math.max(...activity);
+            
+            timelineContainer.innerHTML = days.map((day, index) => {
+                const height = (activity[index] / maxActivity) * 160;
+                return `
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 70%; background: var(--gradient-primary); border-radius: 8px 8px 0 0; 
+                            height: ${height}px; transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s;"></div>
+                        <div style="margin-top: var(--space-sm); font-size: 12px; color: var(--apple-text-secondary); font-weight: 600;">${day}</div>
+                        <div style="font-size: 14px; font-weight: 700; color: var(--apple-text); margin-top: 2px;">${activity[index]}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateEnhancedCategoryDistribution() {
+            const container = document.getElementById('category-distribution');
+            const categories = [
+                { name: 'Tech', value: 35, color: '#007AFF' },
+                { name: 'Env', value: 28, color: '#34C759' },
+                { name: 'Energy', value: 18, color: '#FF9500' },
+                { name: 'Tourism', value: 12, color: '#AF52DE' },
+                { name: 'Social', value: 7, color: '#FF2D55' }
+            ];
+            
+            container.innerHTML = `
+                <div style="display: flex; flex-wrap: wrap; gap: var(--space-lg); justify-content: center;">
+                    ${categories.map(cat => `
+                        <div style="text-align: center;">
+                            <div style="width: 60px; height: 60px; border-radius: 50%; background: conic-gradient(${cat.color} 0% ${cat.value}%, rgba(0,0,0,0.1) ${cat.value}% 100%); margin: 0 auto var(--space-sm); display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: white;"></div>
+                            </div>
+                            <div style="font-weight: 700; color: ${cat.color}; font-size: 16px;">${cat.value}%</div>
+                            <div style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 2px;">${cat.name}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // ============ ENHANCED COMMUNITY ============
+        function loadEnhancedCommunity() {
+            const container = document.getElementById('community-feed');
+            container.innerHTML = enhancedCommunityPosts.map(post => `
+                <div class="post animate-on-scroll">
+                    <div class="post-header">
+                        <div class="post-avatar" style="background: var(--gradient-primary);">${post.avatar}</div>
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--apple-text);">${post.user}</div>
+                                ${post.verified ? `
+                                    <span class="material-icons-round" style="color: var(--apple-blue); font-size: 16px;">verified</span>
+                                ` : ''}
+                            </div>
+                            <div style="font-size: 13px; color: var(--apple-text-secondary);">${post.role} • ${post.time}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="post-content">
+                        ${post.content}
+                    </div>
+                    
+                    <div class="post-actions">
+                        <div class="post-action" onclick="likePost(${post.id})">
+                            <span class="material-icons-round">thumb_up</span>
+                            ${post.likes}
+                        </div>
+                        <div class="post-action" onclick="toggleComments(${post.id})">
+                            <span class="material-icons-round">comment</span>
+                            ${post.comments.length}
+                        </div>
+                        <div class="post-action" onclick="sharePost(${post.id})">
+                            <span class="material-icons-round">share</span>
+                            Share
+                        </div>
+                    </div>
+                    
+                    <!-- Comments Section -->
+                    <div id="comments-${post.id}" class="comment-section" style="display: none;">
+                        <div class="comment-input">
+                            <input type="text" id="comment-input-${post.id}" placeholder="Add a comment...">
+                            <button onclick="addComment(${post.id})">Post</button>
+                        </div>
+                        <div class="comments-list">
+                            ${post.comments.map(comment => `
+                                <div class="comment">
+                                    <div class="comment-author">${comment.user}</div>
+                                    <div class="comment-content">${comment.text}</div>
+                                    <div class="comment-time">${comment.time}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            checkScroll();
+        }
+
+        function createNewPost() {
+            const content = document.getElementById('new-post-content').value.trim();
+            if (!content) {
+                showEnhancedNotification("Please enter some content for your post");
+                return;
+            }
+            
+            const newPost = {
+                id: Date.now(),
+                user: "Demo User",
+                role: "Elite Innovator",
+                avatar: "DU",
+                content: content,
+                time: "Just now",
+                likes: 0,
+                comments: [],
+                verified: true
+            };
+            
+            enhancedCommunityPosts.unshift(newPost);
+            loadEnhancedCommunity();
+            
+            document.getElementById('new-post-content').value = '';
+            showEnhancedNotification("Post published successfully!");
+        }
+
+        function likePost(postId) {
+            const post = enhancedCommunityPosts.find(p => p.id === postId);
+            if (post) {
+                post.likes++;
+                loadEnhancedCommunity();
+                showEnhancedNotification("Post liked!");
+            }
+        }
+
+        function toggleComments(postId) {
+            const commentsSection = document.getElementById(`comments-${postId}`);
+            if (commentsSection.style.display === 'none') {
+                commentsSection.style.display = 'block';
+            } else {
+                commentsSection.style.display = 'none';
+            }
+        }
+
+        function addComment(postId) {
+            const input = document.getElementById(`comment-input-${postId}`);
+            const comment = input.value.trim();
+            
+            if (!comment) return;
+            
+            const post = enhancedCommunityPosts.find(p => p.id === postId);
+            if (post) {
+                // Dodaj komentar na početak liste (gore)
+                post.comments.unshift({
+                    user: "Demo User",
+                    text: comment,
+                    time: "Just now"
+                });
+                
+                // Osvježi prikaz
+                loadEnhancedCommunity();
+                input.value = '';
+                
+                // Osvježi komentare sekciju
+                document.getElementById(`comments-${postId}`).style.display = 'block';
+                
+                showEnhancedNotification("Comment added!");
+            }
+        }
+
+        function sharePost(postId) {
+            const post = enhancedCommunityPosts.find(p => p.id === postId);
+            if (post) {
+                showEnhancedNotification("Post shared to your network!");
+            }
+        }
+
+        // ============ ENHANCED FACT CHECK ============
+        function setSampleClaim(claim) {
+            document.getElementById('factcheck-input').value = claim;
+        }
+
+        function checkFact() {
+            const text = document.getElementById('factcheck-input').value.trim();
+            if (!text) {
+                showEnhancedNotification("Please enter a claim to verify");
+                return;
+            }
+            
+            const checkText = document.getElementById('check-text');
+            const checkLoading = document.getElementById('check-loading');
+            const responseDiv = document.getElementById('ai-response');
+            
+            checkText.style.display = 'none';
+            checkLoading.style.display = 'inline-block';
+            
+            // Simulate AI processing
+            setTimeout(() => {
+                const verdicts = [
+                    { 
+                        type: 'Verified', 
+                        confidence: 94, 
+                        explanation: 'This claim is supported by official city reports and verified data sources from multiple independent audits.',
+                        sources: ['Zadar City Open Data Portal', 'Croatian Bureau of Statistics 2023', 'EU Environmental Agency Report'],
+                        icon: 'verified',
+                        color: '#34C759'
+                    },
+                    { 
+                        type: 'Misleading', 
+                        confidence: 78, 
+                        explanation: 'Partially accurate but contains exaggerated or outdated information that requires clarification.',
+                        sources: ['City Administration Statement', 'Tourism Board Statistics', 'Historical Data Archive'],
+                        icon: 'warning',
+                        color: '#FF9500'
+                    },
+                    { 
+                        type: 'Unverified', 
+                        confidence: 65, 
+                        explanation: 'Insufficient evidence available from trusted sources. Further investigation required.',
+                        sources: ['Pending Official Report', 'Data Collection in Progress', 'External Verification Needed'],
+                        icon: 'help',
+                        color: '#FF3B30'
+                    }
+                ];
+                
+                const verdict = verdicts[Math.floor(Math.random() * verdicts.length)];
+                
+                responseDiv.innerHTML = `
+                    <div class="ai-header">
+                        <span class="material-icons-round ai-icon" style="color: ${verdict.color};">${verdict.icon}</span>
+                        <div class="ai-title">AI Analysis Complete</div>
+                    </div>
+                    <div style="margin-bottom: var(--space-lg);">
+                        <div style="font-size: 32px; font-weight: 700; margin-bottom: var(--space-xs);">${verdict.type}</div>
+                        <div style="font-size: 16px; opacity: 0.9; display: flex; align-items: center; gap: var(--space-sm);">
+                            <div style="background: white; color: ${verdict.color}; padding: 6px 16px; border-radius: 20px; font-weight: 700;">${verdict.confidence}% confidence</div>
+                            <div style="font-size: 14px;">AI Model v2.1 • Processing time: 1.8s</div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: var(--space-xl); font-size: 16px; line-height: 1.6;">
+                        ${verdict.explanation}
+                    </div>
+                    <div>
+                        <div style="font-size: 15px; font-weight: 700; margin-bottom: var(--space-sm);">Sources analyzed:</div>
+                        <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+                            ${verdict.sources.map(source => `
+                                <span style="background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">${source}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="font-size: 14px; opacity: 0.8;">Analysis generated by our AI verification engine trained on 5M+ verified data points</div>
+                    </div>
+                `;
+                
+                responseDiv.style.display = 'block';
+                checkText.style.display = 'inline';
+                checkLoading.style.display = 'none';
+                
+                // Add to user's verification history
+                enhancedUser.verified++;
+                showEnhancedNotification("Fact-check completed with " + verdict.confidence + "% confidence");
+            }, 1500);
+        }
+
+        // ============ ENHANCED MODAL FUNCTIONS ============
+        function showSubmitModal() {
+            document.getElementById('submit-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('submit-modal').style.display = 'none';
+            document.getElementById('submit-success').style.display = 'none';
+        }
+
+        function showNotifications() {
+            const modal = document.getElementById('notifications-modal');
+            const container = document.getElementById('notifications-list');
+            
+            container.innerHTML = enhancedNotifications.map(notification => `
+                <div style="padding: var(--space-lg); border-bottom: 1px solid var(--apple-border); ${!notification.read ? 'background: rgba(0, 122, 255, 0.04);' : ''}">
+                    <div style="display: flex; align-items: flex-start; gap: var(--space-md);">
+                        <div style="width: 36px; height: 36px; border-radius: 10px; background: ${getNotificationColor(notification.type)}; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+                            <span class="material-icons-round">${getNotificationIcon(notification.type)}</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 14px; color: var(--apple-text); margin-bottom: 2px; font-weight: 500;">${notification.text}</div>
+                            <div style="font-size: 12px; color: var(--apple-text-secondary);">${notification.time}</div>
+                        </div>
+                        ${!notification.read ? '<div style="width: 8px; height: 8px; background: var(--apple-blue); border-radius: 50%; flex-shrink: 0; margin-top: 4px;"></div>' : ''}
+                    </div>
+                </div>
+            `).join('');
+            
+            modal.style.display = 'flex';
+        }
+
+        function getNotificationColor(type) {
+            switch(type) {
+                case 'success': return '#34C759';
+                case 'comment': return '#007AFF';
+                case 'achievement': return '#AF52DE';
+                case 'reminder': return '#FF9500';
+                default: return '#86868b';
+            }
+        }
+
+        function getNotificationIcon(type) {
+            switch(type) {
+                case 'success': return 'check_circle';
+                case 'comment': return 'comment';
+                case 'achievement': return 'emoji_events';
+                case 'reminder': return 'notifications';
+                default: return 'info';
+            }
+        }
+
+        function closeNotifications() {
+            document.getElementById('notifications-modal').style.display = 'none';
+        }
+
+        function markAllAsRead() {
+            enhancedNotifications.forEach(n => n.read = true);
+            updateEnhancedNotificationCount();
+            showNotifications();
+        }
+
+        function showUserProfile() {
+            document.getElementById('profile-modal').style.display = 'flex';
+        }
+
+        function closeProfile() {
+            document.getElementById('profile-modal').style.display = 'none';
+        }
+
+        function editProfile() {
+            showEnhancedNotification("Profile editing would open here");
+        }
+
+        function showTutorial() {
+            document.getElementById('tutorial-modal').style.display = 'flex';
+        }
+
+        function closeTutorial() {
+            document.getElementById('tutorial-modal').style.display = 'none';
+        }
+
+        function startTutorial() {
+            closeTutorial();
+            showEnhancedNotification("Starting interactive tutorial...");
+        }
+
+        function skipTutorial() {
+            closeTutorial();
+            showEnhancedNotification("You can always access the tutorial from the Quick Actions");
+        }
+
+        // ============ ENHANCED UTILITY FUNCTIONS ============
+        function updateEnhancedNotificationCount() {
+            const unreadCount = enhancedNotifications.filter(n => !n.read).length;
+            document.querySelector('.notification-count').textContent = unreadCount;
+        }
+
+        function showEnhancedNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 24px;
+                background: var(--apple-card);
+                padding: var(--space-md);
+                border-radius: 14px;
+                border: 1px solid var(--apple-border);
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                animation: slideInRight 0.4s var(--apple-ease);
+                max-width: 360px;
+                display: flex;
+                align-items: center;
+                gap: var(--space-md);
+            `;
+            
+            const icon = type === 'success' ? 'check_circle' : 
+                         type === 'error' ? 'error' : 'info';
+            const color = type === 'success' ? 'var(--apple-green)' : 
+                          type === 'error' ? 'var(--apple-red)' : 'var(--apple-blue)';
+            
+            notification.innerHTML = `
+                <div style="width: 36px; height: 36px; border-radius: 10px; background: ${color}; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">
+                    <span class="material-icons-round">${icon}</span>
+                </div>
+                <div style="font-size: 14px; color: var(--apple-text); font-weight: 500;">${message}</div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.4s var(--apple-ease) reverse';
+                setTimeout(() => notification.remove(), 400);
+            }, 4000);
+        }
+
+        function attachFile() {
+            showEnhancedNotification("File attachment dialog would open here");
+        }
+
+        function addPoll() {
+            showEnhancedNotification("Poll creation interface would open here");
+        }
+
+        function showAllActivity() {
+            showEnhancedNotification("Loading complete activity history...");
+        }
+
+        function showIncubatorStats() {
+            showEnhancedNotification("Opening incubator analytics dashboard...");
+        }
+
+        function viewChallengeDetails(challengeId) {
+            showEnhancedNotification("Loading detailed view of challenge #" + challengeId);
+        }
+
+        function viewIdeaDetails(ideaId) {
+            showEnhancedNotification("Opening detailed view of idea #" + ideaId);
+        }
+
+        function showContact() {
+            showEnhancedNotification("Contact form would open here");
+        }
+
+        function showAbout() {
+            showEnhancedNotification("About page would open here");
+        }
+
+        function showPrivacy() {
+            showEnhancedNotification("Privacy policy would open here");
+        }
+
+        function showTerms() {
+            showEnhancedNotification("Terms of service would open here");
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletter-email').value;
+            if (email && email.includes('@')) {
+                showEnhancedNotification("Successfully subscribed to newsletter!", 'success');
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                showEnhancedNotification("Please enter a valid email address", 'error');
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('idea-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('modal-idea-title').value;
+            const description = document.getElementById('modal-idea-description').value;
+            const category = document.getElementById('modal-idea-category').value;
+            
+            const submitText = document.getElementById('modal-submit-text');
+            const submitLoading = document.getElementById('modal-submit-loading');
+            const successDiv = document.getElementById('submit-success');
+            
+            submitText.style.display = 'none';
+            submitLoading.style.display = 'inline-block';
+            
+            setTimeout(() => {
+                // Generate impact score (75-95 for enhanced demo)
+                const impactScore = Math.floor(Math.random() * 20) + 75;
+                
+                const newIdea = {
+                    id: Date.now(),
+                    title,
+                    description,
+                    category,
+                    impactScore,
+                    date: new Date().toISOString().split('T')[0],
+                    status: 'Discovery'
+                };
+                
+                enhancedUserIdeas.push(newIdea);
+                localStorage.setItem('enhancedIdeas', JSON.stringify(enhancedUserIdeas));
+                
+                // Also add to incubator
+                enhancedIncubatorStages[0].ideas.push({
+                    id: newIdea.id,
+                    title: newIdea.title,
+                    description: "Newly submitted idea",
+                    impact: impactScore
+                });
+                
+                // Update user stats
+                enhancedUser.ideas++;
+                enhancedUser.impactScore = Math.round((enhancedUser.impactScore * 0.9) + (impactScore * 0.1));
+                
+                // Show success
+                document.getElementById('modal-impact-score').textContent = impactScore;
+                successDiv.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Update dashboard
+                loadEnhancedDashboard();
+                
+                submitText.style.display = 'inline';
+                submitLoading.style.display = 'none';
+                
+                // Auto-close after 3 seconds
+                setTimeout(() => {
+                    closeModal();
+                    showEnhancedNotification(`New idea submitted! Impact Score: ${impactScore}`, 'success');
+                }, 3000);
+            }, 1500);
+        });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modals = ['submit-modal', 'notifications-modal', 'profile-modal', 'tutorial-modal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + N for new idea
+            if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+                e.preventDefault();
+                showSubmitModal();
+            }
+            
+            // Escape to close modals
+            if (e.key === 'Escape') {
+                const modals = ['submit-modal', 'notifications-modal', 'profile-modal', 'tutorial-modal'];
+                modals.forEach(modalId => {
+                    const modal = document.getElementById(modalId);
+                    if (modal.style.display === 'flex') {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
